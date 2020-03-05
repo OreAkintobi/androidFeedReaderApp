@@ -3,6 +3,8 @@ package com.ore.top10downloader
 import android.util.Log
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ParseItems {
     private val TAG = "ParseItems"
@@ -23,7 +25,7 @@ class ParseItems {
             var currentRecord = FeedEntry()
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 val tagName =
-                    xpp.name?.toLowerCase()
+                    xpp.name?.toLowerCase(Locale.ROOT)
                 when (eventType) {
                     XmlPullParser.START_TAG -> {
 //                        Log.d(TAG, "parse: Starting tag for $tagName")

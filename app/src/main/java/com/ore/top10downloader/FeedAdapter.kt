@@ -1,6 +1,8 @@
 package com.ore.top10downloader
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +39,11 @@ class FeedAdapter(
         viewHolder.tvPublishDate.text = currentItem.publishDate
         viewHolder.tvSource.text = currentItem.source
 
+        view.setOnClickListener {
+            val openURL = Intent(Intent.ACTION_VIEW)
+            openURL.data = Uri.parse(currentItem.link)
+            context.startActivity(openURL)
+        }
         return view
     }
 }
